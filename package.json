@@ -1,25 +1,27 @@
 {
-    "name": "social-network-api",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "type": "module",
-    "scripts": {
-      "build": "npx tsc",
-      "start": "npm run build && node dist/server.js",
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "seed": "node seeds.js"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "express": "^4.19.2",
-      "mongoose": "^8.5.3"
-    },
-    "devDependencies": {
-      "@types/express": "^4.17.21",
-      "@types/mongoose": "^5.11.96",
-      "typescript": "^5.5.4"
-    }
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "seed": "ts-node seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.7",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   }
+}
