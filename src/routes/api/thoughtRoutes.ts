@@ -31,4 +31,6 @@ thoughtRoutes.route('/:thoughtId/reactions/:reactionId')
 // Export the router as `thoughtRoutes`
 // export { thoughtRoutes, getThoughts, getThoughtById, createThought, updateThought, deleteThought, addReaction, removeReaction };
 
-export { thoughtRoutes };
+// Export the router as `thoughtRoutes`
+// export { thoughtRoutes, getThoughts, getThoughtById, createThought, updateThought, deleteThought, addReaction, removeReaction };
+export { thoughtRoutes, getThoughts, getThoughtById, createThought, updateThought, deleteThought, addReaction, removeReaction };
