@@ -1,4 +1,6 @@
 import { Router } from 'express';
+
+const router = Router();
 import {
   getUsers,
   getUserById,
@@ -7,9 +9,7 @@ import {
   deleteUser,
   addFriend,
   removeFriend,
-} from '../../controllers/userController';
-
-const router = Router();
+} from '../../controllers/userController.js';
 
 router.route('/')
   .get(getUsers)
@@ -21,7 +21,8 @@ router.route('/:id')
   .delete(deleteUser);
 
 router.route('/:userId/friends/:friendId')
-  .post(addFriend) // Add a friend
-  .delete(removeFriend); // Remove a friend
+  .post(addFriend)
+  .delete(removeFriend); 
 
-export default router;
+// export default router;
+export { router as userRoutes };

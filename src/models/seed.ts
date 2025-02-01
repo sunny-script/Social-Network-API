@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import User from './src/models/user';
-import Thought from './src/models/thought';
+import User from './user.js';
+import Thought from './thought.js';
 
 dotenv.config();
 
