@@ -1,16 +1,18 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
-const connectDB = async () => {
+const connectDB = async (): Promise<typeof mongoose.connection> =>{
   try {
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/socialNetworkDB', {
-    });
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/socialNetworkDB');
+    // {
+    // });
     console.log('MongoDB connected');
+    return mongoose.connection;
   } catch (err) {
     console.error('Database connection failed:', err);
-    process.exit(1);
+   throw new Error("Dabase connection failed.");
   }
 };
 
