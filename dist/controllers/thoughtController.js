@@ -31,15 +31,17 @@ export const createThought = async (req, res) => {
         console.log("Request Object: ", req.body);
         // Create a new thought
         const newThought = await Thought.create({ thoughtText, username });
+        console.log("New Thought: ", newThought);
         // Find the user and add the thought ID to their thoughts array
-        const user = await User.findById(userId);
+        // const user = await User.findById(userId);
+        await User.findByIdAndUpdate(req.body.userId, { $push: { thoughts: newThought._id } });
         console.log("User: ", userId);
-        if (!user) {
-            res.status(404).json({ message: 'User not found' });
-            return;
-        }
-        user.thoughts.push(newThought._id);
-        await user.save();
+        // if (!user) {
+        //   res.status(404).json({ message: 'User not found' });
+        //   return;
+        // }
+        // user.thoughts.push(newThought._id);
+        // await user.save();
         res.status(201).json({ message: 'Thought created successfully', thought: newThought });
     }
     catch (err) {
