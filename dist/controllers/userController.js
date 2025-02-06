@@ -12,6 +12,7 @@ export const getUsers = async (req, res) => {
     }
 };
 export const getUserById = async (req, res) => {
+    console.log("Request Object: ", req);
     try {
         const user = await User.findById(req.params.id)
             .populate('friends', 'username email') // Populate `friends` with `username` and `email`
@@ -30,6 +31,11 @@ export const createUser = async (req, res) => {
     try {
         const newUser = new User(req.body);
         const savedUser = await newUser.save();
+        const { username, email } = req.body;
+        if (!username || !email) {
+            res.status(400).json({ message: 'Username and email are required' });
+            return;
+        }
         res.status(201).json(savedUser);
     }
     catch (err) {

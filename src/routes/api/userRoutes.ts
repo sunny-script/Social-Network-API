@@ -28,4 +28,13 @@ router.route('/:userId/friends/:friendId')
 export { router as userRoutes };
 
 
-
+// const urlAddress = `http://localhost:3001/api/users/${id}`;
+/*
+fetch(address, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ username: 'johndoe', email: ''})
+});
+*/
