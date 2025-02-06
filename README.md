@@ -115,7 +115,8 @@ SO THAT my website can handle large amounts of unstructured data
 | createdAt    | Date    | Default: current timestamp, Formatted getter |
 
 ## Walkthrough Video
-[Click here to watch the walkthrough video](#)
+[Click here to watch the walkthrough video - shows all routes except for post new thought and delete reaction](https://drive.google.com/file/d/1RJfpxSMxXwVyeskwmprVnVTSrSQ8dVo6/view)
+[Click here to watch the follow up video that shows post new thought working correctly](https://drive.google.com/file/d/1lWlNuWw6_Tns3CMba8XQShPaGgi6sKbC/view)
 
 ## Screenshots
 Get all Users
