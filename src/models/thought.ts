@@ -1,39 +1,40 @@
-// import mongoose, { Schema, model, Document } from 'mongoose';
-// import reactionSchema from './reaction';
+import { Schema, model, Types } from 'mongoose';
+import { reactionSchema } from './reaction.js';
 
-// export interface IThought extends Document {
-//   thoughtText: string;
-//   username: string;
-//   createdAt: Date;
-//   reactions: mongoose.Types.Array<any>;
-// }
+const ThoughtSchema = new Schema(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 280
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp: string | number | Date) => new Date(timestamp).toLocaleString()
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    reactions: [reactionSchema]
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true
+    },
+    id: false
+  }
+);
 
-// const ThoughtSchema = new Schema<IThought>({
-//   thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
-//   createdAt: { type: Date, default: Date.now },
-//   username: { type: String, required: true },
-//   reactions: [reactionSchema],
-// });
-
-// ThoughtSchema.virtual('reactionCount').get(function () {
-//   return this.reactions.length;
-// });
-
-// const Thought = model<IThought>('Thought', ThoughtSchema);
-
-// export default Thought;
-
-import { Schema, model } from 'mongoose';
-import reactionSchema from './reaction.js';
-
-const ThoughtSchema = new Schema({
-  thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
-  createdAt: { type: Date, default: Date.now },
-  username: { type: String, required: true },
-  reactions: [reactionSchema], // Embed Reaction schema here
-});
-
-ThoughtSchema.virtual('reactionCount').get(function () {
+ThoughtSchema.virtual('reactionCount').get(function() {
   return this.reactions.length;
 });
 

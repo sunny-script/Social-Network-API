@@ -28,10 +28,12 @@ export const getThoughtById = async (req, res) => {
 export const createThought = async (req, res) => {
     try {
         const { thoughtText, username, userId } = req.body;
+        console.log("Request Object: ", req.body);
         // Create a new thought
         const newThought = await Thought.create({ thoughtText, username });
         // Find the user and add the thought ID to their thoughts array
         const user = await User.findById(userId);
+        console.log("User: ", userId);
         if (!user) {
             res.status(404).json({ message: 'User not found' });
             return;
